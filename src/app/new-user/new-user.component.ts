@@ -29,7 +29,7 @@ export class NewUserComponent implements OnInit {
       subcategory: '',
       amount: ''
     })
-
+    this.myForm.valueChanges.subscribe(console.log);
   }
 
 }

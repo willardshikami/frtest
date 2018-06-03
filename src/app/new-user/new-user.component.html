@@ -1,4 +1,4 @@
-<div class="main-input">
+<form [formGroup]="myForm" class="main-input">
   <div class="inputs client-photo">
     <label>Client Photo</label>
     <img src="../../assets/user.png" alt="">
@@ -6,17 +6,17 @@
 
   <div class="inputs first-name">
     <label>First Name</label>
-    <input type="text">
+    <input type="text" formControlName="firstname">
   </div>
 
   <div class="inputs last-name">
     <label>Last Name</label>
-    <input type="text">
+    <input type="text" formControlName="lastname">
   </div>
 
   <div class="inputs rating-name">
     <label>Rating</label>
-    <select>
+    <select formControlName="rating">
       <option value=1>1</option>
       <option value=2>2</option>
       <option value=3>3</option>
@@ -27,16 +27,16 @@
 
   <div class="inputs category">
     <label>Category</label>
-    <select>
-      <option value="sports">Running</option>
-      <option value="leisure">Jogging</option>
+    <select formControlName="category"> 
+      <option value="Running">Running</option>
+      <option value="Jogging">Jogging</option>
     </select>
   </div>
 
   <div class="inputs sub-category">
     <label>Sub Category</label>
     <mat-form-field class="md-input">
-      <mat-select class="md-border" [formControl]="subcategory" multiple>
+      <mat-select formControlName='subcategory' class="md-border" [formControl]="subcategory" multiple>
         <mat-option *ngFor="let subcategory of subcategoryList" [value]="subcategory">{{subcategory}}</mat-option>
       </mat-select>
     </mat-form-field>
@@ -45,11 +45,11 @@
 
   <div class="inputs amount">
     <label>Amount</label>
-    <input type="number">
+    <input type="number" formControlName="amount">
   </div>
 
   <div class="inputs button">
     <label></label>
     <button>SUBMIT</button>
   </div>
-</div>
+</form>

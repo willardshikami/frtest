@@ -1,15 +1,35 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 
 @Component({
-  selector: 'app-new-user',
+  selector: 'new-user',
   templateUrl: './new-user.component.html',
   styleUrls: ['./new-user.component.css']
 })
 export class NewUserComponent implements OnInit {
 
-  constructor() { }
+  //Declare var type to FormGroup
+  myForm: FormGroup;
+
+  subcategory = new FormControl();
+
+  subcategoryList = ['Sports', 'Leisure', 'Office']
+
+  //Adding form builder service to constructor
+  constructor(private fb: FormBuilder) { }
+
 
   ngOnInit() {
+    //create datamodel 
+    this.myForm = this.fb.group({
+      firstname: '',
+      lastname: '',
+      rating: '',
+      category: '',
+      subcategory: '',
+      amount: ''
+    })
+
   }
 
 }

@@ -1,0 +1,56 @@
+/*
+  ========================================
+  INPUTS
+  ========================================
+*/
+.main-input{
+  margin-left: 100px;
+}
+
+.inputs label{
+  display: inline-block;
+  width: 10em;
+}
+
+.client-photo img{
+  width: 15%;
+}
+
+.inputs{
+  padding: 10px;
+}
+
+input, select{
+  width: 40%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.md-input{
+  width: 40%;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.md-border{
+  text-align: center;
+}
+
+mat-select{
+  border-bottom-color: transparent !important;
+}
+
+button{
+  background-color: #999999;
+  color: #FFFFFF;
+  padding: 15px 145px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}

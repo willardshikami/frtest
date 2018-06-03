@@ -1,3 +1,55 @@
-<p>
-  new-user works!
-</p>
+<div class="main-input">
+  <div class="inputs client-photo">
+    <label>Client Photo</label>
+    <img src="../../assets/user.png" alt="">
+  </div>
+
+  <div class="inputs first-name">
+    <label>First Name</label>
+    <input type="text">
+  </div>
+
+  <div class="inputs last-name">
+    <label>Last Name</label>
+    <input type="text">
+  </div>
+
+  <div class="inputs rating-name">
+    <label>Rating</label>
+    <select>
+      <option value=1>1</option>
+      <option value=2>2</option>
+      <option value=3>3</option>
+      <option value=4>4</option>
+      <option value=5>5</option>
+    </select>
+  </div>
+
+  <div class="inputs category">
+    <label>Category</label>
+    <select>
+      <option value="sports">Running</option>
+      <option value="leisure">Jogging</option>
+    </select>
+  </div>
+
+  <div class="inputs sub-category">
+    <label>Sub Category</label>
+    <mat-form-field class="md-input">
+      <mat-select class="md-border" [formControl]="subcategory" multiple>
+        <mat-option *ngFor="let subcategory of subcategoryList" [value]="subcategory">{{subcategory}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+
+  <div class="inputs amount">
+    <label>Amount</label>
+    <input type="number">
+  </div>
+
+  <div class="inputs button">
+    <label></label>
+    <button>SUBMIT</button>
+  </div>
+</div>

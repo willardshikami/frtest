@@ -35,7 +35,7 @@ export class NewUserComponent implements OnInit {
       lastname: "",
       rating: "",
       category: "",
-      subcategory: "",
+      subcategory: [],
       amount: 0
     }
   }

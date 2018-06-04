@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap' 
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
@@ -19,7 +20,6 @@ import { UserService } from './shared/user.service';
 
 import { NewUserComponent } from './new-user/new-user.component';
 import { UserListComponent } from './user-list/user-list.component';
-import { UserDetailComponent } from './user-list/user-detail/user-detail.component';
 
 
 
@@ -28,7 +28,6 @@ import { UserDetailComponent } from './user-list/user-detail/user-detail.compone
     AppComponent,
     NewUserComponent,
     UserListComponent,
-    UserDetailComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
@@ -36,6 +35,7 @@ import { UserDetailComponent } from './user-list/user-detail/user-detail.compone
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
+    NgbModule.forRoot(),
     MatInputModule,
     MatCheckboxModule,
     MatSelectModule,
@@ -52,6 +52,7 @@ import { UserDetailComponent } from './user-list/user-detail/user-detail.compone
       }
     ])
   ],
+  
   providers: [ UserService ],
   bootstrap: [AppComponent]
 })

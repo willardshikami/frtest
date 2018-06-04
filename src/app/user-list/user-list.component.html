@@ -13,7 +13,7 @@
       <th>Amount</th>
     </tr>
 
-    <tr *ngFor="let user of userList">
+    <tr *ngFor="let user of userList" (click)="open(content)" (click)="userDetails(user)">
       <td>May 18, 2018, 1:59:18PM</td>
       <td>{{user.firstname}} {{user.lastname}}</td>
       <td>{{user.rating}}</td>
@@ -24,3 +24,41 @@
     </tr>
   </table>
 </div>
+
+
+<ng-template #content let-c="close" let-d="dismiss" class="modal-dialog modal-xl">
+  <header class="container">
+    <h4 class="modal-title">Item Details</h4>
+    <p>May 18, 2018, 1:59:18PM</p>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </header>
+  <div class="modal-body container">
+
+    <div class="row">
+      <div class="col">
+        <div class="modal-data">
+          
+        </div>
+      </div>
+      <div class="col-6 mid-data">
+        <p>First Name: <span>{{firstname}}</span></p>
+
+        <p>Last Name: <span>{{lastname}}</span></p>
+
+        <p>Rating: <span>{{rating}}</span></p>
+
+        <p>Category: <span>{{category}}</span></p>
+
+        <p>Primary Sub Category: <span>{{subcategory}}</span></p>
+
+        <p>Amount: <span>{{amount}}</span></p>
+      </div>
+      <div class="col">
+          <button class="btn-default button" >EDIT</button>
+      </div>
+    </div>
+
+  </div>
+</ng-template>

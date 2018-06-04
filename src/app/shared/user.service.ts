@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
+import { AngularFireDatabase, AngularFireList, AngularFireObject } from 'angularfire2/database';
 import { User } from './user.model';
 
 @Injectable({
@@ -9,6 +9,7 @@ import { User } from './user.model';
 export class UserService {
 
   userList: AngularFireList<any>;
+  userDetail: AngularFireObject<any>;
   selectedUser: User = new User();
 
   constructor(private firebase: AngularFireDatabase) { }
@@ -17,6 +18,11 @@ export class UserService {
   getData(){
     this.userList = this.firebase.list('users');
     return this.userList;
+  }
+
+  getUser($key: string){
+    this.userDetail = this.firebase.object('user/'+$key);
+    return this.userDetail;
   }
 
   //add user data

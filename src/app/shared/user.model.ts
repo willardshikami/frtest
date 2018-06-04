@@ -4,6 +4,6 @@ export class User {
   lastname: string;
   rating: string;
   category: string;
-  subcategory: string;
+  subcategory: string[];
   amount: number;
 }

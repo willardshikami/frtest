@@ -11,13 +11,14 @@ import{ NgForm } from '@angular/forms';
 export class NewUserComponent implements OnInit {
 
 
-  subcategoryList = ['Sports', 'Leisure', 'Office']
+  subcategoryList = ['Sports', 'Leisure', 'Office'];
 
   //Adding form builder service to constructor
   constructor(private userService: UserService) { }
 
 
   ngOnInit() {
+    this.userService.getData();
     this.resetForm();
   }
   
@@ -27,8 +28,8 @@ export class NewUserComponent implements OnInit {
   }
 
   resetForm(userForm?: NgForm){
-    if(!userForm !=null)
-    userForm.resetForm();
+    if(userForm != null)
+    userForm.reset();
     this.userService.selectedUser = {
       $key: null,
       firstname: "",

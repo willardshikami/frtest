@@ -1,39 +1,42 @@
 /*
   ========================================
-  MAIN CONTAINER
-  ========================================
-*/
-.main{
-  overflow: hidden;
-}
-
-/*
-  ========================================
-  MENU SECTION
-  ========================================
-*/
-.menu{
-  background-color: #EEEEEE;
-  padding-top: 100px;
-  position: relative;
-}
-
-.menu a{
-  color: #111517;
-  display: block;
-  padding: 20px;
-  text-decoration: none;
-}
-
-.menu a:hover{
-  background-color: #999999;
-}
-
-/*
-  ========================================
   BODY SECTION
   ========================================
 */
+
 .body{
   padding: 50px;
+}
+
+.sidenav {
+  height: 100%;
+  width: 200px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #EEEEEE;
+  overflow-x: hidden;
+  padding-top: 100px;
+}
+
+.sidenav a {
+  padding: 6px 6px 6px 32px;
+  text-decoration: none;
+  font-size: 18px;
+  color: #111517;
+  display: block;
+}
+
+.sidenav a:hover{
+  background-color: #999999;
+}
+
+.main {
+  margin-left: 200px; /* Same as the width of the sidenav */
+}
+
+@media screen and (max-height: 450px) {
+.sidenav {padding-top: 15px;}
+.sidenav a {font-size: 18px;}
 }

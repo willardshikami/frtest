@@ -10,7 +10,7 @@
       <th>Category</th>
       <th>Sub Category</th>
       <th>Date</th>
-      <th>Amount</th>
+      <th>Amount(KES)</th>
     </tr>
 
     <tr *ngFor="let user of userList" (click)="open(content)" (click)="userDetails(user)">
@@ -28,34 +28,36 @@
 
 <ng-template #content let-c="close" let-d="dismiss" class="modal-dialog modal-xl">
   <header class="container">
-    <h4 class="modal-title">Item Details</h4>
-    <p>May 18, 2018, 1:59:18PM</p>
+    <div class="top-modal">
+      <h4 class="modal-title">Item Details</h4>
+      <p>May 18, 2018, 1:59:18PM</p>
+    </div>
     <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
   </header>
+  <hr>
   <div class="modal-body container">
 
     <div class="row">
-      <div class="col">
-        <div class="modal-data">
-          
-        </div>
+      <div class="col vl-right">
+          <p>{{firstname}} <span> {{lastname}}</span></p>
+          <small><span><strong>Rating:</strong></span> {{rating}}</small>
       </div>
-      <div class="col-6 mid-data">
-        <p>First Name: <span>{{firstname}}</span></p>
+      <div class="col-6 mid-data vl-right">
+        <p><span class="data-title">First Name:</span> <span>{{firstname}}</span></p>
 
-        <p>Last Name: <span>{{lastname}}</span></p>
+        <p><span class="data-title">Last Name:</span> <span>{{lastname}}</span></p>
 
-        <p>Rating: <span>{{rating}}</span></p>
+        <p><span class="data-title">Rating:</span> <span>{{rating}}</span></p>
 
-        <p>Category: <span>{{category}}</span></p>
+        <p><span class="data-title">Category:</span> <span>{{category}}</span></p>
 
-        <p>Primary Sub Category: <span>{{subcategory}}</span></p>
+        <p><span class="data-title">Primary Sub Category:</span> <span>{{subcategory}}</span></p>
 
-        <p>Amount: <span>{{amount}}</span></p>
+        <p><span class="data-title">Amount(KES):</span> <span>{{amount}}</span></p>
       </div>
-      <div class="col">
+      <div class="col button-left">
           <button class="btn-default button" >EDIT</button>
       </div>
     </div>

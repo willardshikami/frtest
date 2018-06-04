@@ -12,6 +12,10 @@ td, th {
   padding: 10px;
 }
 
+td{
+  cursor: pointer;
+}
+
 .user-list h1, p{
   margin: 0;
 }
@@ -20,9 +24,27 @@ td, th {
   padding-bottom: 50px;
 }
 
+.top-modal{
+  float: left;
+}
+
+hr{
+  width: 100%;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+.vl-right{
+  border-right: 1px solid #EEEEEE;
+  height: 500px;
+}
+
+.vl-right p{
+  padding-top: 10px; 
+}
 
 .mid-data p{
-  padding: 20px;
+  padding: 15px;
 }
 
 .modal-data{
@@ -31,14 +53,41 @@ td, th {
   width: 10em;
 }
 
+/*
+  ========================================
+  BUTTONS
+  ========================================
+*/
+
+.close{
+  padding: 20px;
+}
+
+.button-left{
+  text-align: center;
+}
+
+
 .button{
   background-color: #999999;
   color: #FFFFFF;
-  padding: 15px 145px;
+  padding: 10px 50px;
   margin: 8px 0;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+}
+
+/*
+  ========================================
+  DATA TITLE
+  ========================================
+*/
+
+.data-title{
+  font-weight: bold;
+  text-align: right !important;
+  margin-right: 15px;
 }
 
 @media (min-width: 768px) {

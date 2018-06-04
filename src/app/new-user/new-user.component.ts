@@ -18,7 +18,6 @@ export class NewUserComponent implements OnInit {
 
 
   ngOnInit() {
-    this.userService.getData();
     this.resetForm();
   }
   

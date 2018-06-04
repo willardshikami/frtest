@@ -2,7 +2,7 @@
   <h1>Item List</h1>
   <p>A list of all your items</p>
 
-  <table>
+  <table class="table table-sm table-hover">
     <tr>
       <th>Created Date</th>
       <th>Client</th>
@@ -13,14 +13,14 @@
       <th>Amount</th>
     </tr>
 
-    <tr *ngFor let user of users (click)="openDialog()" >
+    <tr *ngFor="let user of userList">
       <td>May 18, 2018, 1:59:18PM</td>
       <td>{{user.firstname}} {{user.lastname}}</td>
-      <td>Rating</td>
-      <td>Running</td>
-      <td>Sports, Leisure</td>
+      <td>{{user.rating}}</td>
+      <td>{{user.category}}</td>
+      <td>{{user.subcategory}}</td>
       <td>20 May, 2018 19:00</td>
-      <td>2,200</td>
+      <td>{{user.amount}}</td>
     </tr>
   </table>
 </div>

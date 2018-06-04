@@ -8,9 +8,7 @@ table{
 }
 
 td, th {
-  border-bottom: 1px solid #dddddd;
   text-align: left;
-  padding: 12px;
 }
 
 .user-list h1, p{

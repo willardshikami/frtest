@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
@@ -14,6 +14,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatChipsModule } from '@angular/material/chips';
+
+import { UserService } from './shared/user.service';
 
 import { NewUserComponent } from './new-user/new-user.component';
 import { UserListComponent } from './user-list/user-list.component';
@@ -33,7 +35,7 @@ import { UserDetailComponent } from './user-list/user-detail/user-detail.compone
     AngularFireDatabaseModule,
     BrowserModule,
     BrowserAnimationsModule,
-    ReactiveFormsModule,
+    FormsModule,
     MatInputModule,
     MatCheckboxModule,
     MatSelectModule,
@@ -50,7 +52,7 @@ import { UserDetailComponent } from './user-list/user-detail/user-detail.compone
       }
     ])
   ],
-  providers: [],
+  providers: [ UserService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

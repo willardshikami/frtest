@@ -13,11 +13,13 @@ export class UserService {
 
   constructor(private firebase: AngularFireDatabase) { }
 
+  //Get user data
   getData(){
     this.userList = this.firebase.list('users');
     return this.userList;
   }
 
+  //add user data
   insertUser(user: User){
     this.userList.push({
       firstname: user.firstname,
@@ -29,6 +31,7 @@ export class UserService {
     });
   }
 
+  //update user data
   updateUser(user: User){
     this.userList.update(user.$key, 
       {
@@ -41,6 +44,7 @@ export class UserService {
       });
   }
 
+  //delete user data
   deleteUser($key: string){
     this.userList.remove($key);
   }

@@ -1,4 +1,4 @@
-<form [formGroup]="myForm" class="main-input">
+<form #userForm="ngForm" class="main-input" (ngSubmit)="onSubmit(userForm)">
   <div class="inputs client-photo">
     <label>Client Photo</label>
     <img src="../../assets/user.png" alt="">
@@ -6,17 +6,17 @@
 
   <div class="inputs first-name">
     <label>First Name</label>
-    <input type="text" formControlName="firstname">
+    <input name="firstname" #firstname="ngModel" [(ngModel)]="userService.firstname" required>
   </div>
 
   <div class="inputs last-name">
-    <label>Last Name</label>
-    <input type="text" formControlName="lastname">
-  </div>
+      <label>Last Name</label>
+      <input name="lastname" #lastname="ngModel" [(ngModel)]="userService.lastname" required>
+    </div>
 
   <div class="inputs rating-name">
     <label>Rating</label>
-    <select formControlName="rating">
+    <select name="rating" #rating="ngModel" [(ngModel)]="userService.rating">
       <option value=1>1</option>
       <option value=2>2</option>
       <option value=3>3</option>
@@ -27,7 +27,7 @@
 
   <div class="inputs category">
     <label>Category</label>
-    <select formControlName="category"> 
+    <select name="category" #category="ngModel" [(ngModel)]="userService.category"> 
       <option value="Running">Running</option>
       <option value="Jogging">Jogging</option>
     </select>
@@ -36,7 +36,7 @@
   <div class="inputs sub-category">
     <label>Sub Category</label>
     <mat-form-field class="md-input">
-      <mat-select formControlName='subcategory' class="md-border" [formControl]="subcategory" multiple>
+      <mat-select class="md-border" name="subcategory" #subcategory="ngModel" [(ngModel)]="userService.subcategory" multiple>
         <mat-option *ngFor="let subcategory of subcategoryList" [value]="subcategory">{{subcategory}}</mat-option>
       </mat-select>
     </mat-form-field>
@@ -45,11 +45,11 @@
 
   <div class="inputs amount">
     <label>Amount</label>
-    <input type="number" formControlName="amount">
+    <input type="number" name="amount" #amount="ngModel" [(ngModel)]="userService.amount" required>
   </div>
 
   <div class="inputs button">
     <label></label>
-    <button>SUBMIT</button>
+    <button class="btn-default" type="submit" [disabled]="!userForm.valid" >SUBMIT</button>
   </div>
 </form>

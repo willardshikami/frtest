@@ -4,8 +4,6 @@
   ========================================
 */
 .main{
-  display: flex;
-  margin: 0 auto;
   overflow: hidden;
 }
 
@@ -16,7 +14,6 @@
 */
 .menu{
   background-color: #EEEEEE;
-  flex: 1;
   padding-top: 100px;
   position: relative;
 }
@@ -38,6 +35,5 @@
   ========================================
 */
 .body{
-  flex: 4;
   padding: 50px;
 }

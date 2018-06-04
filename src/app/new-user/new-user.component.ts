@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { UserService } from '../shared/user.service';
+
+import{ NgForm } from '@angular/forms';
 
 @Component({
   selector: 'new-user',
@@ -8,18 +10,35 @@ import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 })
 export class NewUserComponent implements OnInit {
 
-  //Declare var type to FormGroup
-  myForm: FormGroup;
-
-  subcategory = new FormControl();
 
   subcategoryList = ['Sports', 'Leisure', 'Office']
 
   //Adding form builder service to constructor
-  constructor(private fb: FormBuilder) { }
+  constructor(private userService: UserService) { }
 
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.userService.getData();
+    this.resetForm();
+  }
   
+  onSubmit(userForm: NgForm){
+    this.userService.insertUser(userForm.value);
+    this.resetForm(userForm);
+  }
+
+  resetForm(userForm?: NgForm){
+    if(!userForm !=null)
+    userForm.resetForm();
+    this.userService.selectedUser = {
+      $key: null,
+      firstname: "",
+      lastname: "",
+      rating: "",
+      category: "",
+      subcategory: "",
+      amount: 0
+    }
+  }
 
 }

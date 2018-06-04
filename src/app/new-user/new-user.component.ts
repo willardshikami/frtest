@@ -19,17 +19,7 @@ export class NewUserComponent implements OnInit {
   constructor(private fb: FormBuilder) { }
 
 
-  ngOnInit() {
-    //create datamodel 
-    this.myForm = this.fb.group({
-      firstname: '',
-      lastname: '',
-      rating: '',
-      category: '',
-      subcategory: '',
-      amount: ''
-    })
-    this.myForm.valueChanges.subscribe(console.log);
-  }
+  ngOnInit() {}
+  
 
 }

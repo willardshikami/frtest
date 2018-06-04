@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog, MAT_DIALOG_DATA } from '@angular/material';
 
 @Component({
   selector: 'user-list',
@@ -8,7 +7,9 @@ import { MatDialog, MAT_DIALOG_DATA } from '@angular/material';
 })
 export class UserListComponent implements OnInit {
 
-  constructor() { }
+
+
+  constructor() {}
 
   ngOnInit() {
   }

@@ -37,7 +37,9 @@ export class NewUserComponent implements OnInit {
       rating: "",
       category: "",
       subcategory: [],
-      amount: 0
+      amount: 0,
+      created: 0,
+      updated: 0
     }
   }
 

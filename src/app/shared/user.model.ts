@@ -6,4 +6,6 @@ export class User {
   category: string;
   subcategory: string[];
   amount: number;
+  created: any;
+  updated: any;
 }

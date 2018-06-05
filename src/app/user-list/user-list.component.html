@@ -14,12 +14,12 @@
     </tr>
 
     <tr *ngFor="let user of userList" (click)="open(content)" (click)="userDetails(user)">
-      <td>May 18, 2018, 1:59:18PM</td>
-      <td>{{user.firstname}} {{user.lastname}}</td>
+      <td>{{user.created}}</td>
+      <td><span class="table-img"><img src="../../assets/user.png" alt=""> </span> {{user.firstname}} {{user.lastname}}</td>
       <td>{{user.rating}}</td>
       <td>{{user.category}}</td>
-      <td>{{user.subcategory}}</td>
-      <td>20 May, 2018 19:00</td>
+      <td>{{user.subcategory[0]}} {{user.subcategory[1]}} {{user.subcategory[2]}}</td>
+      <td>{{user.created}}</td>
       <td>{{user.amount}}</td>
     </tr>
   </table>
@@ -30,7 +30,7 @@
   <header class="container">
     <div class="top-modal">
       <h4 class="modal-title">Item Details</h4>
-      <p>May 18, 2018, 1:59:18PM</p>
+      <p>{{created}}</p>
     </div>
     <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
       <span aria-hidden="true">&times;</span>
@@ -45,20 +45,20 @@
           <small><span><strong>Rating:</strong></span> {{rating}}</small>
       </div>
       <div class="col-6 mid-data vl-right">
-        <p><span class="data-title">First Name:</span> <span>{{firstname}}</span></p>
+        <p><span class="data-title">First Name:</span> <span class="data-data">{{firstname}}</span></p>
 
-        <p><span class="data-title">Last Name:</span> <span>{{lastname}}</span></p>
+        <p><span class="data-title">Last Name:</span> <span class="data-data">{{lastname}}</span></p>
 
-        <p><span class="data-title">Rating:</span> <span>{{rating}}</span></p>
+        <p><span class="data-title">Rating:</span> <span class="data-data">{{rating}}</span></p>
 
-        <p><span class="data-title">Category:</span> <span>{{category}}</span></p>
+        <p><span class="data-title">Category:</span> <span class="data-data">{{category}}</span></p>
 
-        <p><span class="data-title">Primary Sub Category:</span> <span>{{subcategory}}</span></p>
+        <p><span class="data-title">Primary Sub Category:</span> <span class="data-data">{{subcategory[0]}} {{subcategory[1]}} {{subcategory[2]}}</span></p>
 
-        <p><span class="data-title">Amount(KES):</span> <span>{{amount}}</span></p>
+        <p><span class="data-title">Amount(KES):</span> <span class="data-data">{{amount}}</span></p>
       </div>
       <div class="col button-left">
-          <button class="btn-default button" >EDIT</button>
+          <button class="btn-default button" (click)="onUpdate(user)">EDIT</button>
       </div>
     </div>
 

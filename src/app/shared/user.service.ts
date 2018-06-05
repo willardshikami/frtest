@@ -8,19 +8,21 @@ import { User } from './user.model';
 })
 export class UserService {
 
+
   userList: AngularFireList<any>;
   userDetail: AngularFireObject<any>;
   
   selectedUser: User = new User();
 
-  constructor(private firebase: AngularFireDatabase) { }
+  constructor(private firebase: AngularFireDatabase) {}
+  
 
   //Get user data
   getData(){
     this.userList = this.firebase.list('users');
     return this.userList;
   }
-
+  
 
   //add user data
   insertUser(user: User){
@@ -30,9 +32,11 @@ export class UserService {
       rating: user.rating,
       category: user.category,
       subcategory: user.subcategory,
-      amount: user.amount
+      amount: user.amount,
+      created: new Date().toDateString()
     });
   }
+
 
   //update user data
   updateUser(user: User){
@@ -43,7 +47,8 @@ export class UserService {
         rating: user.rating,
         category: user.category,
         subcategory: user.subcategory,
-        amount: user.amount
+        amount: user.amount,
+        updated: new Date().toDateString()
       });
   }
 
@@ -51,4 +56,5 @@ export class UserService {
   deleteUser($key: string){
     this.userList.remove($key);
   }
+
 }

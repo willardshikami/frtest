@@ -156,6 +156,10 @@ var AppModule = /** @class */ (function () {
                 _angular_material_button__WEBPACK_IMPORTED_MODULE_12__["MatButtonModule"],
                 _angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forRoot([
                     {
+                        path: '',
+                        component: _user_list_user_list_component__WEBPACK_IMPORTED_MODULE_17__["UserListComponent"]
+                    },
+                    {
                         path: 'new-user',
                         component: _new_user_new_user_component__WEBPACK_IMPORTED_MODULE_16__["NewUserComponent"]
                     },
@@ -245,7 +249,9 @@ var NewUserComponent = /** @class */ (function () {
             rating: "",
             category: "",
             subcategory: [],
-            amount: 0
+            amount: 0,
+            created: 0,
+            updated: 0
         };
     };
     NewUserComponent = __decorate([
@@ -326,7 +332,8 @@ var UserService = /** @class */ (function () {
             rating: user.rating,
             category: user.category,
             subcategory: user.subcategory,
-            amount: user.amount
+            amount: user.amount,
+            created: new Date().toDateString()
         });
     };
     //update user data
@@ -337,7 +344,8 @@ var UserService = /** @class */ (function () {
             rating: user.rating,
             category: user.category,
             subcategory: user.subcategory,
-            amount: user.amount
+            amount: user.amount,
+            updated: new Date().toDateString()
         });
     };
     //delete user data
@@ -364,7 +372,7 @@ var UserService = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/*\n  ========================================\n  TABLE\n  ========================================\n*/\ntable{\n  width: 100%;\n}\ntd, th {\n  text-align: left;\n  padding: 10px;\n}\ntd{\n  cursor: pointer;\n}\n.user-list h1, p{\n  margin: 0;\n}\n.user-list p{\n  padding-bottom: 50px;\n}\n.top-modal{\n  float: left;\n}\nhr{\n  width: 100%;\n  padding-bottom: 0;\n  margin-bottom: 0;\n}\n.vl-right{\n  border-right: 1px solid #EEEEEE;\n  height: 500px;\n}\n.vl-right p{\n  padding-top: 10px; \n}\n.mid-data p{\n  padding: 15px;\n}\n.modal-data{\n  display: inline-block !important;\n  text-align: center;\n  width: 10em;\n}\n/*\n  ========================================\n  BUTTONS\n  ========================================\n*/\n.close{\n  padding: 20px;\n}\n.button-left{\n  text-align: center;\n}\n.button{\n  background-color: #999999;\n  color: #FFFFFF;\n  padding: 10px 50px;\n  margin: 8px 0;\n  border: none;\n  border-radius: 4px;\n  cursor: pointer;\n}\n/*\n  ========================================\n  DATA TITLE\n  ========================================\n*/\n.data-title{\n  font-weight: bold;\n  text-align: right !important;\n  margin-right: 15px;\n}\n@media (min-width: 768px) {\n  .modal-dialog {\n    width: 600px;\n    margin: 30px auto;\n  }\n}\n@media (min-width: 992px) {\n  .modal-lg {\n    width: 900px;\n  }\n}\n@media (min-width: 768px) {\n  .modal-xl {\n    width: 90%;\n   max-width:1200px;\n  }\n}\n"
+module.exports = "/*\n  ========================================\n  TABLE\n  ========================================\n*/\ntable{\n  width: 100%;\n}\ntd, th {\n  text-align: left;\n  padding: 10px;\n}\n.table-img img{\n  width: 35px;\n  padding-right: 5px;\n}\ntd{\n  cursor: pointer;\n}\n.user-list h1, p{\n  margin: 0;\n}\n.user-list p{\n  padding-bottom: 50px;\n}\n.top-modal{\n  float: left;\n}\nhr{\n  width: 100%;\n  padding-bottom: 0;\n  margin-bottom: 0;\n}\n.vl-right{\n  border-right: 1px solid #EEEEEE;\n  height: 500px;\n}\n.vl-right p{\n  padding-top: 10px; \n}\n.subcategory{\n  background: #EEEEEE;\n  border-radius: 5px;\n  padding: 8px 12px;\n  margin-right: 3px; \n}\n.mid-data p{\n  padding: 15px;\n}\n.modal-data{\n  display: inline-block !important;\n  text-align: center;\n  width: 10em;\n}\n.data-title{\n  text-align: right;\n  width: 10em;\n  float: left;\n}\n.data-data{\n  text-align: left;\n\n}\n/*\n  ========================================\n  BUTTONS\n  ========================================\n*/\n.close{\n  padding: 20px;\n}\n.button-left{\n  text-align: center;\n}\n.button{\n  background-color: #999999;\n  color: #FFFFFF;\n  padding: 10px 50px;\n  margin: 8px 0;\n  border: none;\n  border-radius: 4px;\n  cursor: pointer;\n}\n/*\n  ========================================\n  DATA TITLE\n  ========================================\n*/\n.data-title{\n  font-weight: bold;\n  text-align: right !important;\n  margin-right: 15px;\n}\n@media (min-width: 768px) {\n  .modal-dialog {\n    width: 600px;\n    margin: 30px auto;\n  }\n}\n@media (min-width: 992px) {\n  .modal-lg {\n    width: 900px;\n  }\n}\n@media (min-width: 768px) {\n  .modal-xl {\n    width: 90%;\n   max-width:1200px;\n  }\n}\n"
 
 /***/ }),
 
@@ -375,7 +383,7 @@ module.exports = "/*\n  ========================================\n  TABLE\n  ===
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"user-list\">\n  <h1>Item List</h1>\n  <p>A list of all your items</p>\n\n  <table class=\"table table-sm table-hover\">\n    <tr>\n      <th>Created Date</th>\n      <th>Client</th>\n      <th>Rating</th>\n      <th>Category</th>\n      <th>Sub Category</th>\n      <th>Date</th>\n      <th>Amount(KES)</th>\n    </tr>\n\n    <tr *ngFor=\"let user of userList\" (click)=\"open(content)\" (click)=\"userDetails(user)\">\n      <td>May 18, 2018, 1:59:18PM</td>\n      <td>{{user.firstname}} {{user.lastname}}</td>\n      <td>{{user.rating}}</td>\n      <td>{{user.category}}</td>\n      <td>{{user.subcategory}}</td>\n      <td>20 May, 2018 19:00</td>\n      <td>{{user.amount}}</td>\n    </tr>\n  </table>\n</div>\n\n\n<ng-template #content let-c=\"close\" let-d=\"dismiss\" class=\"modal-dialog modal-xl\">\n  <header class=\"container\">\n    <div class=\"top-modal\">\n      <h4 class=\"modal-title\">Item Details</h4>\n      <p>May 18, 2018, 1:59:18PM</p>\n    </div>\n    <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"d('Cross click')\">\n      <span aria-hidden=\"true\">&times;</span>\n    </button>\n  </header>\n  <hr>\n  <div class=\"modal-body container\">\n\n    <div class=\"row\">\n      <div class=\"col vl-right\">\n          <p>{{firstname}} <span> {{lastname}}</span></p>\n          <small><span><strong>Rating:</strong></span> {{rating}}</small>\n      </div>\n      <div class=\"col-6 mid-data vl-right\">\n        <p><span class=\"data-title\">First Name:</span> <span>{{firstname}}</span></p>\n\n        <p><span class=\"data-title\">Last Name:</span> <span>{{lastname}}</span></p>\n\n        <p><span class=\"data-title\">Rating:</span> <span>{{rating}}</span></p>\n\n        <p><span class=\"data-title\">Category:</span> <span>{{category}}</span></p>\n\n        <p><span class=\"data-title\">Primary Sub Category:</span> <span>{{subcategory}}</span></p>\n\n        <p><span class=\"data-title\">Amount(KES):</span> <span>{{amount}}</span></p>\n      </div>\n      <div class=\"col button-left\">\n          <button class=\"btn-default button\" >EDIT</button>\n      </div>\n    </div>\n\n  </div>\n</ng-template>\n"
+module.exports = "<div class=\"user-list\">\n  <h1>Item List</h1>\n  <p>A list of all your items</p>\n\n  <table class=\"table table-sm table-hover\">\n    <tr>\n      <th>Created Date</th>\n      <th>Client</th>\n      <th>Rating</th>\n      <th>Category</th>\n      <th>Sub Category</th>\n      <th>Date</th>\n      <th>Amount(KES)</th>\n    </tr>\n\n    <tr *ngFor=\"let user of userList\" (click)=\"open(content)\" (click)=\"userDetails(user)\">\n      <td>{{user.created}}</td>\n      <td><span class=\"table-img\"><img src=\"../../assets/user.png\" alt=\"\"> </span> {{user.firstname}} {{user.lastname}}</td>\n      <td>{{user.rating}}</td>\n      <td>{{user.category}}</td>\n      <td>{{user.subcategory[0]}} {{user.subcategory[1]}} {{user.subcategory[2]}}</td>\n      <td>{{user.created}}</td>\n      <td>{{user.amount}}</td>\n    </tr>\n  </table>\n</div>\n\n\n<ng-template #content let-c=\"close\" let-d=\"dismiss\" class=\"modal-dialog modal-xl\">\n  <header class=\"container\">\n    <div class=\"top-modal\">\n      <h4 class=\"modal-title\">Item Details</h4>\n      <p>{{created}}</p>\n    </div>\n    <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"d('Cross click')\">\n      <span aria-hidden=\"true\">&times;</span>\n    </button>\n  </header>\n  <hr>\n  <div class=\"modal-body container\">\n\n    <div class=\"row\">\n      <div class=\"col vl-right\">\n          <p>{{firstname}} <span> {{lastname}}</span></p>\n          <small><span><strong>Rating:</strong></span> {{rating}}</small>\n      </div>\n      <div class=\"col-6 mid-data vl-right\">\n        <p><span class=\"data-title\">First Name:</span> <span class=\"data-data\">{{firstname}}</span></p>\n\n        <p><span class=\"data-title\">Last Name:</span> <span class=\"data-data\">{{lastname}}</span></p>\n\n        <p><span class=\"data-title\">Rating:</span> <span class=\"data-data\">{{rating}}</span></p>\n\n        <p><span class=\"data-title\">Category:</span> <span class=\"data-data\">{{category}}</span></p>\n\n        <p><span class=\"data-title\">Primary Sub Category:</span> <span class=\"data-data\">{{subcategory[0]}} {{subcategory[1]}} {{subcategory[2]}}</span></p>\n\n        <p><span class=\"data-title\">Amount(KES):</span> <span class=\"data-data\">{{amount}}</span></p>\n      </div>\n      <div class=\"col button-left\">\n          <button class=\"btn-default button\" (click)=\"onUpdate(user)\">EDIT</button>\n      </div>\n    </div>\n\n  </div>\n</ng-template>\n"
 
 /***/ }),
 
@@ -391,7 +399,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UserListComponent", function() { return UserListComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _shared_user_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../shared/user.service */ "./src/app/shared/user.service.ts");
-/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/index.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/index.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -404,13 +413,18 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
+
 var UserListComponent = /** @class */ (function () {
-    function UserListComponent(modalService, userService) {
+    function UserListComponent(modalService, userService, router, route) {
         this.modalService = modalService;
         this.userService = userService;
+        this.router = router;
+        this.route = route;
     }
     UserListComponent.prototype.ngOnInit = function () {
         var _this = this;
+        //get Data
         var single = this.userService.getData();
         single.snapshotChanges().subscribe(function (item) {
             _this.userList = [];
@@ -420,7 +434,13 @@ var UserListComponent = /** @class */ (function () {
                 _this.userList.push(all);
             });
         });
+        //Edit data
     };
+    UserListComponent.prototype.onUpdate = function (usr) {
+        console.log('updating');
+        this.userService.selectedUser = usr;
+    };
+    //Fetch Single User
     UserListComponent.prototype.userDetails = function (usr) {
         this.userService.selectedUser = usr;
         this.firstname = usr.firstname;
@@ -429,6 +449,8 @@ var UserListComponent = /** @class */ (function () {
         this.category = usr.category;
         this.subcategory = usr.subcategory;
         this.amount = usr.amount;
+        this.created = usr.created;
+        console.log(this.subcategory[0]);
     };
     UserListComponent.prototype.open = function (content) {
         var _this = this;
@@ -439,10 +461,10 @@ var UserListComponent = /** @class */ (function () {
         });
     };
     UserListComponent.prototype.getDismissReason = function (reason) {
-        if (reason === _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["ModalDismissReasons"].ESC) {
+        if (reason === _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__["ModalDismissReasons"].ESC) {
             return 'by pressing ESC';
         }
-        else if (reason === _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["ModalDismissReasons"].BACKDROP_CLICK) {
+        else if (reason === _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__["ModalDismissReasons"].BACKDROP_CLICK) {
             return 'by clicking on a backdrop';
         }
         else {
@@ -455,7 +477,10 @@ var UserListComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./user-list.component.html */ "./src/app/user-list/user-list.component.html"),
             styles: [__webpack_require__(/*! ./user-list.component.css */ "./src/app/user-list/user-list.component.css")],
         }),
-        __metadata("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"], _shared_user_service__WEBPACK_IMPORTED_MODULE_1__["UserService"]])
+        __metadata("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NgbModal"],
+            _shared_user_service__WEBPACK_IMPORTED_MODULE_1__["UserService"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"]])
     ], UserListComponent);
     return UserListComponent;
 }());
